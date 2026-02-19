@@ -36,14 +36,14 @@ Windows(Windows 11)、Mac(Apple M4, macOS Sequoia)及びLinux(Ubuntu 22.04)環�
 
 事前準備
 ```
-git clone https://github.com/ndl-lab/ndlkotenocr-lite
-cd ndlkotenocr-lite
+git clone https://github.com/ndl-lab/ndlocr-lite
+cd ndlocr-lite
 pip install -r requirements.txt
 cd src
 ```
-実行例1.（同階層にある「竜宮苦界玉手箱 _ 3巻_9892834_0001」という名称のディレクトリ内の画像を一括処理し、tmpdirという名称のディレクトリに結果を出力する。）
+実行例1.（同階層にある「9892834_0001」という名称のディレクトリ内の画像を一括処理し、tmpdirという名称のディレクトリに結果を出力する。）
 ```
-python3 ocr.py --sourcedir 竜宮苦界玉手箱 _ 3巻_9892834_0001 --output tmpdir 
+python3 ocr.py --sourcedir 9892834_0001 --output tmpdir 
 ```
 
 実行例2.（同階層にある「digidepo_1287221_00000002.jpg」という名称の画像を処理し、tmpdirという名称のディレクトリに結果を出力する。）
