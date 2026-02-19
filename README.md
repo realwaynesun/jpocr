@@ -77,7 +77,7 @@ OCR結果を保存する出力先ディレクトリを相対パスまたは絶�
 
 NDLOCR-Liteは「レイアウト認識」、「文字列認識」、「読み順整序」の3つの機能（モジュール）を組み合わせて実現しています。
 
-レイアウト認識にはDEIMv2[1]、文字列認識にはPARSeq[2]をそれぞれ用いており、読み順整序については当館が公開している[NDL古典籍OCR ver.3](https://github.com/ndl-lab/ndlkotenocr_cli)と同様のモジュールを用いています。
+レイアウト認識にはDEIMv2[1]、文字列認識にはPARSeq[2]をそれぞれ用いており、読み順整序については当館が公開している[NDLOCR](https://github.com/ndl-lab/ndlocr_cli)と同様のモジュールを用いています。
 
 [1]Shihua Huang and Yongjie Hou and Longfei Liu and Xuanlong Yu and Xi Shen. Real-Time Object Detection Meets DINOv3. arXiv preprint arXiv:2509.20787, 2022.(https://arxiv.org/abs/2509.20787)
 
