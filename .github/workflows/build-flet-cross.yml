@@ -65,7 +65,7 @@ jobs:
           # Intel Macの場合のみ引数を追加する処理
           if [ "${{ matrix.runs-on }}" = "macos-15-intel" ]; then
             echo "Intel Mac detected: Configuring specific settings..."
-            EXTRA_ARGS="--arch x64"
+            EXTRA_ARGS="--arch x86_64"
           fi
           flet build ${{ matrix.target-platform }} --output ../${{ matrix.target-platform }} --build-version ${{github.ref_name}} $EXTRA_ARGS
       - name: "Flet build(Windows)"
