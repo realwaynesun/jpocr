@@ -62,13 +62,13 @@ jobs:
           cd ndlocr-lite-gui
           cp -r ../src .
           flet build ${{ matrix.target-platform }} --output ../${{ matrix.target-platform }} --build-version ${{github.ref_name}}
-          cp main.py ../${{ matrix.target-platform }}
       - name: "Flet build(Windows)"
         if: runner.os == 'Windows'
         shell: cmd
         run: |
           cd ndlocr-lite-gui
           echo D | xcopy ..\src .\src /E
+          copy main.py ..\${{ matrix.target-platform }}
           set PYTHONUTF8=1
           flet build ${{ matrix.target-platform }} --output ..\${{ matrix.target-platform }} --build-version ${{github.ref_name}}
       - name: "Linux/MacOS compress"
