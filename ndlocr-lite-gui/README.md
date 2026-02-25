@@ -18,9 +18,6 @@ https://zenn.dev/nakamura196/articles/c62a465537ff20
 なお、初回の起動には1分程度時間を要することがあります。お待ちください。
 
 ## 操作方法
-
-<img src="../resource/control.jpg" width="600">
-
 ①OCR処理をかけたいファイルまたはディレクトリを指定します。画像（jpg,png,tiff,bmp,jp2）に加えてPDFファイルに対する処理が可能です。
 
 ②出力先となるディレクトリを指定します。
