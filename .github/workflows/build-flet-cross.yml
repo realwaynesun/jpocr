@@ -68,9 +68,9 @@ jobs:
         run: |
           cd ndlocr-lite-gui
           echo D | xcopy ..\src .\src /E
-          copy main.py ..\${{ matrix.target-platform }}
           set PYTHONUTF8=1
           flet build ${{ matrix.target-platform }} --output ..\${{ matrix.target-platform }} --build-version ${{github.ref_name}}
+          copy main.py ..\${{ matrix.target-platform }}
       - name: "Linux/MacOS compress"
         if: runner.os != 'Windows'
         run: tar zcvf ${{matrix.binary-name}} ${{ matrix.target-platform }}
