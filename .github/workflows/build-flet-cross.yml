@@ -61,7 +61,8 @@ jobs:
         run: |
           cd ndlocr-lite-gui
           cp -r ../src .
-          flet build ${{ matrix.target-platform }} --output ../${{ matrix.target-platform }} --build-version ${{github.ref_name}} 
+          flet build ${{ matrix.target-platform }} --output ../${{ matrix.target-platform }} --build-version ${{github.ref_name}}
+          cp main.py ../${{ matrix.target-platform }}
       - name: "Flet build(Windows)"
         if: runner.os == 'Windows'
         shell: cmd
