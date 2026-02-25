@@ -1,6 +1,6 @@
 flet==0.27.6
 dill==0.3.8
-lxml==5.2.2
+lxml==5.4.0
 networkx==3.3
 onnxruntime==1.23.2
 pillow==12.1.1
