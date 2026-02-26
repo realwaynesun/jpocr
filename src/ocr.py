@@ -207,6 +207,30 @@ def process(args):
             linerecogobj = RecogLine(lineimg, idx, pred_char_cnt)
             alllineobj.append(linerecogobj)
 
+        if len(alllineobj) == 0 and len(detections) > 0:
+            # LINE 要素がないが検出がある場合は検出領域を LINE として扱う
+            page = root.find("PAGE")
+            for idx, det in enumerate(detections):
+                xmin, ymin, xmax, ymax = det["box"]
+                line_w = int(xmax - xmin)
+                line_h = int(ymax - ymin)
+                if line_w > 0 and line_h > 0:
+                    line_elem = ET.SubElement(page, "LINE")
+                    line_elem.set("TYPE", "本文")
+                    line_elem.set("X", str(int(xmin)))
+                    line_elem.set("Y", str(int(ymin)))
+                    line_elem.set("WIDTH", str(line_w))
+                    line_elem.set("HEIGHT", str(line_h))
+                    line_elem.set("CONF", f"{det['confidence']:0.3f}")
+                    pred_char_cnt = det.get("pred_char_count", 100.0)
+                    line_elem.set("PRED_CHAR_CNT", f"{pred_char_cnt:0.3f}")
+                    if line_h > line_w:
+                        tatelinecnt += 1
+                    alllinecnt += 1
+                    lineimg = img[int(ymin):int(ymax), int(xmin):int(xmax), :]
+                    linerecogobj = RecogLine(lineimg, idx, pred_char_cnt)
+                    alllineobj.append(linerecogobj)
+
         # 認識プロセス
         resultlinesall = process_cascade(
             alllineobj, recognizer30, recognizer50, recognizer100, is_cascade=True
