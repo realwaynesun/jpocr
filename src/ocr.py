@@ -227,7 +227,7 @@ def process(args):
             resjsonarray.append(jsonobj)
         allxmlstr+=(ET.tostring(root.find("PAGE"), encoding='unicode')+"\n")
         allxmlstr+="</OCRDATASET>"
-        if tatelinecnt/alllinecnt>0.5:
+        if alllinecnt>0 and tatelinecnt/alllinecnt>0.5:
             alltextlist=alltextlist[::-1]
         with open(os.path.join(args.output,os.path.basename(inputpath).split(".")[0]+".xml"),"w",encoding="utf-8") as wf:
             wf.write(allxmlstr)
