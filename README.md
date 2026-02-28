@@ -16,18 +16,7 @@ bash install.sh
 
 ### エージェントへの登録
 
-`SKILL.md` をエージェントに読み込ませてください:
-
-```bash
-# Claude Code
-mkdir -p ~/.claude/skills/jpocr
-ln -sf "$(pwd)/SKILL.md" ~/.claude/skills/jpocr/SKILL.md
-
-# Cline / Roo Code
-cat SKILL.md >> .clinerules
-
-# その他 — SKILL.md をシステムプロンプトやコンテキストに追加
-```
+`SKILL.md` をお使いのAIエージェントのスキル読み込み機構に登録してください。スキルに対応したエージェントであれば、フレームワークを問わず利用できます。
 
 ## 仕組み
 
