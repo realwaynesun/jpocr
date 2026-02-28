@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
-# NDLOCR-Lite CLI wrapper for Claude Code
-# Usage:
-#   ocr-cli.sh <image_path>              → prints plain text to stdout
-#   ocr-cli.sh <image_path> --json       → prints JSON with bounding boxes
-#   ocr-cli.sh <image_path> --viz        → also saves visualization image
-#   ocr-cli.sh <dir_path>                → batch process all images in dir
+# jpocr — Japanese OCR skill executor
+# Called by AI agents via SKILL.md. Also usable standalone.
 
 set -euo pipefail
 
