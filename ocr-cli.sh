@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# NDLOCR-Lite CLI wrapper for Claude Code
+# Usage:
+#   ocr-cli.sh <image_path>              → prints plain text to stdout
+#   ocr-cli.sh <image_path> --json       → prints JSON with bounding boxes
+#   ocr-cli.sh <image_path> --viz        → also saves visualization image
+#   ocr-cli.sh <dir_path>                → batch process all images in dir
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+VENV="$SCRIPT_DIR/.venv/bin/python"
+OCR="$SCRIPT_DIR/src/ocr.py"
+OUTDIR="${JPOCR_OUTPUT:-$SCRIPT_DIR/output}"
+
+mkdir -p "$OUTDIR"
+
+INPUT="$1"
+shift || true
+
+FORMAT="text"
+VIZ=""
+for arg in "$@"; do
+  case "$arg" in
+    --json) FORMAT="json" ;;
+    --viz)  VIZ="True" ;;
+  esac
+done
+
+if [ -d "$INPUT" ]; then
+  SOURCE_ARG="--sourcedir $INPUT"
+else
+  SOURCE_ARG="--sourceimg $INPUT"
+fi
+
+VIZ_FLAG=""
+[ -n "$VIZ" ] && VIZ_FLAG="--viz True"
+
+"$VENV" "$OCR" $SOURCE_ARG --output "$OUTDIR" $VIZ_FLAG >/dev/null 2>&1
+
+BASENAME=$(basename "$INPUT" | sed 's/\.[^.]*$//')
+
+if [ "$FORMAT" = "json" ]; then
+  cat "$OUTDIR/$BASENAME.json"
+else
+  cat "$OUTDIR/$BASENAME.txt"
+fi
