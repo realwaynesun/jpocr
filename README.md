@@ -8,6 +8,14 @@
 
 ## スキル導入 / Install
 
+### ClawHub（推奨）
+
+```bash
+clawhub install jpocr
+```
+
+### GitHub
+
 ```bash
 git clone https://github.com/realwaynesun/jpocr.git
 cd jpocr
