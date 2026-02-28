@@ -19,14 +19,13 @@ Runs on CPU (Apple Silicon / x86), no GPU or API key required.
 
 ## How to call
 
-Run `ocr-cli.sh` located in the same directory as this SKILL.md:
+Run `scripts/ocr-cli.sh` from the skill root directory:
 
 ```bash
-SKILL_DIR="$(dirname "$0")"   # or however your agent resolves skill paths
-$SKILL_DIR/ocr-cli.sh <image_path>              # → plain text to stdout
-$SKILL_DIR/ocr-cli.sh <image_path> --json        # → JSON with bounding boxes
-$SKILL_DIR/ocr-cli.sh <image_path> --viz         # → also saves visualization
-$SKILL_DIR/ocr-cli.sh <dir_path>                 # → batch all images in dir
+<SKILL_ROOT>/scripts/ocr-cli.sh <image_path>              # → plain text to stdout
+<SKILL_ROOT>/scripts/ocr-cli.sh <image_path> --json        # → JSON with bounding boxes
+<SKILL_ROOT>/scripts/ocr-cli.sh <image_path> --viz         # → also saves visualization
+<SKILL_ROOT>/scripts/ocr-cli.sh <dir_path>                 # → batch all images in dir
 ```
 
 ## Output formats

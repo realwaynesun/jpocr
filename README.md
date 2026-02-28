@@ -6,7 +6,7 @@
 
 > An AI agent skill that gives your agent Japanese OCR capability. Powered by NDLOCR-Lite from Japan's National Diet Library. Runs locally on CPU — no GPU, no API key.
 
-## スキル導入 / Install the Skill
+## スキル導入 / Install
 
 ```bash
 git clone https://github.com/realwaynesun/jpocr.git
@@ -14,33 +14,44 @@ cd jpocr
 bash install.sh
 ```
 
-`install.sh` はPython venvの作成と依存パッケージのインストールを行います。
-
 ### エージェントへの登録
 
-`SKILL.md` をエージェントに読み込ませてください。方法はフレームワークにより異なります:
+`SKILL.md` をエージェントに読み込ませてください:
 
 ```bash
-# Claude Code — スキルディレクトリにシンボリックリンク
+# Claude Code
 mkdir -p ~/.claude/skills/jpocr
 ln -sf "$(pwd)/SKILL.md" ~/.claude/skills/jpocr/SKILL.md
 
-# Cline / Roo Code — .clinerules に追加
+# Cline / Roo Code
 cat SKILL.md >> .clinerules
 
-# その他のエージェント — SKILL.md をシステムプロンプトやコンテキストに追加
+# その他 — SKILL.md をシステムプロンプトやコンテキストに追加
 ```
 
-## 仕組み / How it Works
+## 仕組み
 
 ```
 ユーザー: 「この画像のテキストを読んで」
     ↓
-エージェント: SKILL.md を参照 → ocr-cli.sh を実行
+エージェント: SKILL.md を参照 → scripts/ocr-cli.sh を実行
     ↓
-ocr-cli.sh: NDLOCR-Lite でOCR処理 → テキスト/JSONを返す
+OCRエンジン: NDLOCR-Lite で処理 → テキスト/JSONを返す
     ↓
 エージェント: 結果をユーザーに返す
+```
+
+## ファイル構成
+
+```
+jpocr/
+├── SKILL.md              # スキル定義（エージェントが読むファイル）
+├── scripts/
+│   └── ocr-cli.sh        # OCR実行スクリプト
+├── install.sh            # 依存パッケージのインストール
+├── src/                  # OCRエンジン（NDLOCR-Lite）
+├── requirements.txt
+└── LICENCE               # CC BY 4.0
 ```
 
 ## 対応範囲
@@ -61,21 +72,9 @@ ocr-cli.sh: NDLOCR-Lite でOCR処理 → テキスト/JSONを返す
 - Python 3.10+
 - macOS / Linux / Windows (WSL)
 
-## 技術情報
-
-| モジュール | 手法 |
-|-----------|------|
-| レイアウト認識 | DEIMv2 (ONNX) |
-| 文字列認識 | PARSeq カスケード（30/50/100文字モデル, ONNX） |
-| 読み順整序 | xy-cutアルゴリズム |
-
-詳細は[学習及びモデル変換手順](./train/README.md)を参照。
-
 ## ライセンス
 
 CC BY 4.0 — 国立国会図書館 ([NDLラボ](https://lab.ndl.go.jp))
-
-詳細: [LICENCE](./LICENCE)
 
 ## クレジット
 

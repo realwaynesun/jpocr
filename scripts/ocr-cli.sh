@@ -5,9 +5,10 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-VENV="$SCRIPT_DIR/.venv/bin/python"
-OCR="$SCRIPT_DIR/src/ocr.py"
-OUTDIR="${JPOCR_OUTPUT:-$SCRIPT_DIR/output}"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+VENV="$REPO_ROOT/.venv/bin/python"
+OCR="$REPO_ROOT/src/ocr.py"
+OUTDIR="${JPOCR_OUTPUT:-$REPO_ROOT/output}"
 
 mkdir -p "$OUTDIR"
 

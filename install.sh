@@ -26,7 +26,7 @@ if "$SCRIPT_DIR/.venv/bin/python" -c "import onnxruntime; print(f'  onnxruntime 
   echo ""
   echo "Skill files:"
   echo "  $SCRIPT_DIR/SKILL.md"
-  echo "  $SCRIPT_DIR/ocr-cli.sh"
+  echo "  $SCRIPT_DIR/scripts/ocr-cli.sh"
   echo ""
   echo "Point your agent to SKILL.md, or symlink it:"
   echo "  # Claude Code"
